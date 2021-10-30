@@ -68,7 +68,7 @@ console.log(appList);
 
       <div className='todo'>
         <h2 className='title'>Welcome to your Todo App!</h2>
-        <TodoForm add={addTask} clear = {clear}/>
+        <TodoForm />
         <TodoList lists={appList} completed={completed}/>
       </div>
 

@@ -1,12 +1,15 @@
+
 // let nextTodoId = 0;
 
-// const addTodo = text => {
-//     return {
-//       type: "ADD_TODO",
-//       text,
-//       id: nextTodoId++
-//     };
-//   };
+ export let ADD_TODO = 'ADD_TODO'
+// let ADD_TODO = 'ADD_TODO'
+
+export const addTodo = task => {
+    return {
+      type: "ADD_TODO",
+      payload: task
+    };
+  };
 
 //   const toggleTodo = id => {
 //     return {
