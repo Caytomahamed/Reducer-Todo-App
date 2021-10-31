@@ -16,9 +16,6 @@ const TodoForm  = (props) =>  {
     const handleSubmit = (event) => {
         event.preventDefault();
          props.addTodo(newTask)
-        // {(event.target.value) === "" ? alert('please Enter something') :
-        // this.props.add(this.state.newTask)
-        // }
         setNewTask('')
     }
         return (
@@ -43,7 +40,6 @@ const mapStateToProps = state => {
 
     return {
         todos: [
-            ...state.todos,
         {
             id:state.id,
             task:state.task,

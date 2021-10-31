@@ -2,26 +2,23 @@
 // feel free to change this component.js into TodoList.js
 import React,{useContext} from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions/Todoaction';
-import { TodoContext } from '../context/Todocontext';
+import { addTodo, toggleTodo } from '../actions/Todoaction';
+
 import Todo from './Todo';
 
 const TodoList = (props) => { 
-    const TodoReducerList = props.todos
-    const lists = useContext(TodoContext)
-    console.log('todoList', props.todos);
-    console.log('todoList', TodoReducerList);
+    const {todos , toggleTodo} = props
+    console.log('todolist',props);
     return(
             <div >
-               {TodoReducerList.map( list => (
-                   <Todo data = {list} key={list.id} completed={props.completed} />
+               {todos.map( list => (
+                   <Todo data= {list} key={list.id}  toggleTodo = {toggleTodo}/>
                ))}
             </div>
         )
     }
 
  const map = state => {
-     
     return {
         todos: [
             ...state.todos,
@@ -30,8 +27,7 @@ const TodoList = (props) => {
             task:state.task,
             completed:state.completed
         }]
-        
     }
  }
 
-export default connect(map, {addTodo})(TodoList);
+export default connect(map, {addTodo,toggleTodo})(TodoList);
