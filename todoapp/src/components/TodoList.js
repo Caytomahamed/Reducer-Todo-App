@@ -6,13 +6,14 @@ import { addTodo } from '../actions/Todoaction';
 import { TodoContext } from '../context/Todocontext';
 import Todo from './Todo';
 
-const TodoList = (props) => {
-    const TodoReducerList = props
-   const lists = useContext(TodoContext)
-    console.log('todoList', props);
+const TodoList = (props) => { 
+    const TodoReducerList = props.todos
+    const lists = useContext(TodoContext)
+    console.log('todoList', props.todos);
+    console.log('todoList', TodoReducerList);
     return(
             <div >
-               {lists.map( list => (
+               {TodoReducerList.map( list => (
                    <Todo data = {list} key={list.id} completed={props.completed} />
                ))}
             </div>
@@ -20,11 +21,17 @@ const TodoList = (props) => {
     }
 
  const map = state => {
-     return{
-         id : state.id,
-         task : state.task,
-         completed : state.completed
-     }
+     
+    return {
+        todos: [
+            ...state.todos,
+        {
+            id:state.id,
+            task:state.task,
+            completed:state.completed
+        }]
+        
+    }
  }
 
 export default connect(map, {addTodo})(TodoList);

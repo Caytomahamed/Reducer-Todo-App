@@ -3,11 +3,11 @@ import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm';
 import './App.css';
 import { TodoContext } from './context/Todocontext';
-import  {data}  from './data';
+
 
 const App = () =>  {
 
-  const [appList,setAppList] = useState(data)
+  // const [appList,setAppList] = useState(data)
 
   //ADD NEW TASK 
 
@@ -18,43 +18,43 @@ const App = () =>  {
       completed: false
     }
 
-    setAppList([...appList, addNew])
+    // setAppList([...appList, addNew])
   }
 
 
-  const completed = (id) => {
-    const completedTask = appList.map(clickOne => {
-      if(clickOne.id === id ){
-        return {
-          ...clickOne,
-          completed:!clickOne.completed
-        }
-      }
+//   const completed = (id) => {
+//     const completedTask = appList.map(clickOne => {
+//       if(clickOne.id === id ){
+//         return {
+//           ...clickOne,
+//           completed:!clickOne.completed
+//         }
+//       }
       
-        else {
-          return clickOne
-        }
+//         else {
+//           return clickOne
+//         }
 
-    })
+//     })
 
-    setAppList(completedTask)
-  }
+//     // setAppList(completedTask)
+//   }
 
-  const clear = e  =>{
-    e.preventDefault();
-    let clearOne = appList.slice()
-    clearOne =clearOne.filter(one => !one.completed)
-    setAppList(clearOne)
-  }
-console.log(appList);
+//   const clear = e  =>{
+//     e.preventDefault();
+//     let clearOne = appList.slice()
+//     clearOne =clearOne.filter(one => !one.completed)
+//     // setAppList(clearOne)
+//   }
+// console.log(appList);
     return (
-      <TodoContext.Provider value={appList}>
+      // <TodoContext.Provider value={appList}>
       <div className='todo'>
         <h2 className='title'>Welcome to your Todo App!</h2>
         <TodoForm />
-        <TodoList completed={completed}/>
+        <TodoList/>
       </div>
-      </TodoContext.Provider>
+      // </TodoContext.Provider>
     );
   }
 

@@ -40,10 +40,16 @@ const TodoForm  = (props) =>  {
     }
 
 const mapStateToProps = state => {
+
     return {
-        id:state.id,
-        task: state.task,
-        completed:state.completed
+        todos: [
+            ...state.todos,
+        {
+            id:state.id,
+            task:state.task,
+            completed:state.completed
+        }]
+        
     }
   }
 
