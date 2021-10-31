@@ -2,27 +2,10 @@ import React,{useState} from 'react';
 import TodoList from './components/TodoList'
 import TodoForm from './components/TodoForm';
 import './App.css';
-
+import { TodoContext } from './context/Todocontext';
+import  {data}  from './data';
 
 const App = () =>  {
-  const data = [
-    {
-      task: 'Organize Garage',
-      id: 1528817077286,
-      completed: false
-    },
-    {
-      task: 'Bake Cookies',
-      id: 1528817084358,
-      completed: false
-    },
-    {
-      task: 'watching tv',
-      id: 1528817084359,
-      completed: false
-    }
-  ];
-  
 
   const [appList,setAppList] = useState(data)
 
@@ -65,13 +48,13 @@ const App = () =>  {
   }
 console.log(appList);
     return (
-
+      <TodoContext.Provider value={appList}>
       <div className='todo'>
         <h2 className='title'>Welcome to your Todo App!</h2>
         <TodoForm />
-        <TodoList lists={appList} completed={completed}/>
+        <TodoList completed={completed}/>
       </div>
-
+      </TodoContext.Provider>
     );
   }
 

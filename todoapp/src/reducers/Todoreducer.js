@@ -3,7 +3,7 @@ import { ADD_TODO } from "../actions/Todoaction";
 
 const initialState = {
       id :  Math.floor(Math.random() * 5000 * 0),
-      task :'form a reducer',
+      task :'',
       completed: false
 };
 
@@ -14,7 +14,7 @@ const initialState = {
           ...state,
               id: action.id,
               task: action.task,
-              completed: false,
+              completed: action.completed,
         };
       // case 'TOGGLE_TODO':
       //   return {

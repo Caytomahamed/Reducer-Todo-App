@@ -1,13 +1,25 @@
 
-// let nextTodoId = 0;
+export let nextTodoId = 1;
 
- export let ADD_TODO = 'ADD_TODO'
+//ACTION TYPE 
+ export const ADD_TODO = 'ADD_TODO'
 // let ADD_TODO = 'ADD_TODO'
 
+
+//ACTION CREATOR 
+const addTask = event => {
+  const addNew = {
+    task: event,
+    id: Date.now(),
+    completed: false
+  }
+}
 export const addTodo = task => {
     return {
+      id: nextTodoId++,
       type: "ADD_TODO",
-      payload: task
+      task: task,
+      completed: false
     };
   };
 

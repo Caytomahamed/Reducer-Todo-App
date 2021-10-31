@@ -1,60 +1,49 @@
-import React from "react"
+import React, {useState,useContext } from "react"
 import { connect } from "react-redux"
 import { addTodo } from "../actions/Todoaction"
 import '../App.css'
+import { TodoContext } from "../context/Todocontext"
 
-class TodoForm extends React.Component{
+const TodoForm  = (props) =>  {
+    const data = useContext(TodoContext)
+    console.log('form' ,props);
+    const [newTask,setNewTask] = useState('')
 
-    constructor(){
-        super()
-        this.state = {
-            newTask : ""
-        }
+    const handleChange = (event) => {
+        setNewTask( event.target.value)
     }
 
-
-    handleChange = (event) => {
-        this.setState({
-             newTask: event.target.value
-        })
-           
-    }
-
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addTodo(this.state.newTask)
+         props.addTodo(newTask)
         // {(event.target.value) === "" ? alert('please Enter something') :
         // this.props.add(this.state.newTask)
         // }
-        this.setState({
-            newTask : ''
-        })
+        setNewTask('')
     }
-   
-    render(){
-        console.log(this.props.task);
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <input 
                     type='text'
                     name='newtask'
-                    value={this.state.newTask}
-                    onChange={this.handleChange}
+                    value={newTask}
+                    onChange={handleChange}
                     placeholder='To do list '
                     />
                     <button className='add'>Add Todo</button>
                     <button   className='clearBtn'
-                     onClick={this.props.clear}>Clear Completed</button>
+                     onClick={props.clear}>Clear Completed</button>
                 </form>
             </div>
         )
     }
-}
 
 const mapStateToProps = state => {
     return {
-        task: state.task
+        id:state.id,
+        task: state.task,
+        completed:state.completed
     }
   }
 
