@@ -62,7 +62,7 @@ input:focus{
 .clearBtn{
     background-color: rgb(211, 100, 100);
     color: #fff;
-    transform: translateY(2px);
+    transform: translate(28rem,-2.4rem);
     margin-left: 1rem;
     padding: .6rem 1rem;
     border-radius: 5px;
@@ -73,10 +73,9 @@ input:focus{
 
 .clearBtn:hover{
     box-shadow: 0 .2rem 1rem rgba(0, 0, 0, 0.5);
-    transform: translateY(-1px);
+   
 }
 .clearBtn:active{
-    transform: translateY(0px);
     box-shadow: 0 .2rem 1rem rgba(0, 0, 0, 0.2);
 }
 
@@ -96,7 +95,8 @@ input:focus{
     display: none;
 }
 .task{
-
+    margin-top: -1rem;
+    margin-bottom: 2rem;
     padding: 1rem 10px;
     font-size: 1rem;
     border-radius: 5px;

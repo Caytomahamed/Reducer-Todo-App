@@ -1,21 +1,27 @@
-import React, {useState,useContext } from "react"
+import React, {useState } from "react"
 import { connect } from "react-redux"
-import { addTodo } from "../actions/Todoaction"
+import { addTodo,clearTodo } from "../actions/Todoaction"
 import '../App.css'
-import { TodoContext } from "../context/Todocontext"
 
 const TodoForm  = (props) =>  {
-    const data = useContext(TodoContext)
-    console.log('form' ,props);
+ 
+    
     const [newTask,setNewTask] = useState('')
 
     const handleChange = (event) => {
-        setNewTask( event.target.value)
+        setNewTask(event.target.value) 
     }
 
     const handleSubmit = (event) => {
+        let inPut = document.querySelector('input')
+      
         event.preventDefault();
-         props.addTodo(newTask)
+        if(inPut.value === ''){
+            alert('add something ')
+        }else {
+            props.addTodo(newTask)
+        }
+      
         setNewTask('')
     }
         return (
@@ -27,11 +33,14 @@ const TodoForm  = (props) =>  {
                     value={newTask}
                     onChange={handleChange}
                     placeholder='To do list '
+                    autoComplete='off'
                     />
                     <button className='add'>Add Todo</button>
-                    <button   className='clearBtn'
-                     onClick={props.clear}>Clear Completed</button>
+                    
                 </form>
+                <button   className='clearBtn'
+                     onClick = {props.clearTodo}>Clear Completed</button>
+            
             </div>
         )
     }
@@ -49,4 +58,4 @@ const mapStateToProps = state => {
     }
   }
 
-export default  connect(mapStateToProps, {addTodo})(TodoForm);
+export default  connect(mapStateToProps, {addTodo ,clearTodo})(TodoForm);

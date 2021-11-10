@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { addTodo, toggleTodo } from '../actions/Todoaction';
 
 import Todo from './Todo';
-
+    // console.log(toogle);
 const TodoList = (props) => { 
     const {todos , toggleTodo} = props
-    console.log('todolist',props);
+    console.log(props);
     return(
             <div >
                {todos.map( list => (
@@ -19,14 +19,13 @@ const TodoList = (props) => {
     }
 
  const map = state => {
+     console.log('state ' + state);
     return {
+  
         todos: [
             ...state.todos,
-        {
-            id:state.id,
-            task:state.task,
-            completed:state.completed
-        }]
+             
+        ]
     }
  }
 

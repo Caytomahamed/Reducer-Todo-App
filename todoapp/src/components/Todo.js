@@ -3,7 +3,6 @@ import '../App'
 
 const Todo = props => {
 
-   console.log('todo.js ' , props.data.completed);
     return (
         <div onClick={() => props.toggleTodo (props.data.id)} 
         className={` ${props.data.completed ? 'completed' : '' }`}>
